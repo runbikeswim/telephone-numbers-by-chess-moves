@@ -52,7 +52,7 @@ start position:  6, length:   3, number of telephone-numbers:                   
 start position:  7, length:   3, number of telephone-numbers:                                  5
 start position:  8, length:   3, number of telephone-numbers:                                  4
 start position:  9, length:   3, number of telephone-numbers:                                  5
-	  total number of telephone-numbers with length        3:                                 46
+	  total number of telephone-numbers with length    3:                                 46
 ``` 
 
 ## Code
