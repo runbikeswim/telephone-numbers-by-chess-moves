@@ -1,6 +1,6 @@
 package experiments
 
-import org.scalatest._
+import org.scalatest.FunSuite
 
 class TelephoneNumbersByChessMovesTest extends FunSuite {
 
@@ -48,23 +48,28 @@ class TelephoneNumbersByChessMovesTest extends FunSuite {
     }
   }
 
+  test(s"results for the ${ChessPieces.Knight} and 10-digit numbers are correct") {
+    val result = countTelephoneNumbers( successorsMap(ChessPieces.Knight), 10)
+    assert(result.toList == List[BigInt](1760, 1424, 1424, 1424, 2304, 0, 2304, 1424, 1424, 1424))
+  }
+  
   test(s"results for the ${ChessPieces.Knight}") {
-    println(getResultsAsString(getTelephoneNumbers, ChessPieces.Knight, 30, 31))
+    println(getResultsAsString(countTelephoneNumbers, ChessPieces.Knight, 30, 31))
   }
 
   test(s"results for the ${ChessPieces.Bishop}") {
-    println(getResultsAsString(getTelephoneNumbers, ChessPieces.Bishop, 30, 31))
+    println(getResultsAsString(countTelephoneNumbers, ChessPieces.Bishop, 30, 31))
   }
 
   test(s"results for the ${ChessPieces.Rook}") {
-    println(getResultsAsString(getTelephoneNumbers, ChessPieces.Rook, 30, 31))
+    println(getResultsAsString(countTelephoneNumbers, ChessPieces.Rook, 30, 31))
   }
 
   test(s"results for the ${ChessPieces.King}") {
-    println(getResultsAsString(getTelephoneNumbers, ChessPieces.King, 30, 31))
+    println(getResultsAsString(countTelephoneNumbers, ChessPieces.King, 30, 31))
   }
 
   test(s"results for the ${ChessPieces.Queen}") {
-    println(getResultsAsString(getTelephoneNumbers, ChessPieces.Queen, 30, 31))
+    println(getResultsAsString(countTelephoneNumbers, ChessPieces.Queen, 30, 31))
   }
 }
