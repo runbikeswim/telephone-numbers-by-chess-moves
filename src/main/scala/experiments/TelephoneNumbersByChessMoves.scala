@@ -27,7 +27,7 @@ object TelephoneNumbersByChessMoves {
    */
   def countTelephoneNumbers(successors: Array[List[Int]], numberLength: Int): Array[BigInt] = {
 
-    val lengths = Array.ofDim[BigInt](2, 10) // stores results
+    val result = Array.ofDim[BigInt](2, 10) // stores results
     val currentIndex = (k: Int) => k % 2     // current index for array lengths
     val previousIndex = (k: Int) => 1 - (k % 2) // index of last iteration in array lengths, i.e. previous results
 
@@ -35,9 +35,9 @@ object TelephoneNumbersByChessMoves {
     def countNumbersInner(length: Int, interation: Int): Unit =
       if (interation < length) {
         if (interation == 0) { // initialize lengths
-          for (p <- 0 to 9) lengths(currentIndex(interation))(p) = BigInt(1)
+          for (p <- 0 to 9) result(currentIndex(interation))(p) = BigInt(1)
         } else { // take previous results stored in lengths(1 - k % 2) to compute values for k and store that in lengths(k % 2)
-          for (p <- 0 to 9) lengths(currentIndex(interation))(p) = successors(p).map(i => lengths(previousIndex(interation))(i)).sum
+          for (p <- 0 to 9) result(currentIndex(interation))(p) = successors(p).map(i => result(previousIndex(interation))(i)).sum
         }
         countNumbersInner(length, interation + 1)
       }
@@ -48,7 +48,7 @@ object TelephoneNumbersByChessMoves {
       (0 to 9).map(i => BigInt(1)).toArray // return that there exists 1 possibility (which is the empty string) for each position
     } else { // reasonable parameters
       countNumbersInner(numberLength, 0)
-      lengths(previousIndex(numberLength))
+      result(previousIndex(numberLength))
     }
   }
 }
